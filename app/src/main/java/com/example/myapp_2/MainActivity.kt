@@ -1,71 +1,108 @@
-package com.example.myapp_2
+package com.example.my_app_2
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.myapp_2.ui.theme.Myapp_2Theme
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.ui.graphics.*
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.my_app_2.ui.theme.My_app_2Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Myapp_2Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            My_app_2Theme {
+                // Set BoxScreen as the main content of the activity
+                RegistrationScreen(modifier = Modifier.fillMaxSize())
+            
             }
         }
     }
 }
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier.background(color = Color.LightGray)
-            .fillMaxWidth(),
-        color = Color.Red,
-        textAlign = TextAlign.Center,
-        fontSize = 18.sp,
-        fontWeight = FontWeight.Bold
 
-    )
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun GreetingPreview() {
-    Myapp_2Theme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            Greeting(
-                name = "Android",
-                modifier = Modifier.padding(innerPadding)
-            )
-        }
-    }
-}
+//
+//
+//import androidx.compose.foundation.Image
+//import androidx.compose.foundation.clickable
+//import androidx.compose.foundation.layout.Box
+//import androidx.compose.foundation.layout.padding
+//import androidx.compose.foundation.layout.size
+//import androidx.compose.material.icons.Icons
+//import androidx.compose.material.icons.filled.Favorite
+//import androidx.compose.material.icons.filled.Lock
+//import androidx.compose.material.icons.filled.Person
+//import androidx.compose.material3.Scaffold
+//import androidx.compose.runtime.Composable
+//import androidx.compose.runtime.mutableStateOf
+//import androidx.compose.runtime.remember
+//import androidx.compose.ui.Alignment
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.tooling.preview.Preview
+//import androidx.compose.ui.unit.dp
+//import androidx.compose.runtime.getValue
+//import androidx.compose.runtime.setValue
+//
+//@Composable
+//fun BoxScreen(modifier: Modifier = Modifier) {
+//    Scaffold {
+//            innerPadding ->
+//
+//            Box(
+//                modifier = modifier.padding(innerPadding)
+//            ){
+//                var myImage by remember {
+//                    mutableStateOf(Icons.Default.Person)
+//                }
+//                Image(
+//                    imageVector = Icons.Default.Lock,
+//                    contentDescription = "Lock Icon",
+//                    modifier = Modifier.size(50.dp).align(
+//                        Alignment.TopStart
+//                    )
+//                )
+//                Image(
+//                    imageVector = myImage,
+//                    contentDescription = "Lock Icon" ,
+//                    modifier = Modifier.size(200.dp).align(
+//                        Alignment.TopCenter
+//                    ).clickable(
+//                        onClick = {
+//                            if(myImage == Icons.Default.Person){
+//                                myImage = Icons.Default.Lock
+//                            }else{
+//                                myImage = Icons.Default.Person
+//                            }
+//                        }
+//                    )
+//                )
+//                Image(
+//                    imageVector = Icons.Default.Favorite ,
+//                    contentDescription = "Lock Icon" ,
+//                    modifier = Modifier.size(50.dp).align(
+//                        Alignment.TopEnd
+//                    ).clickable(
+//                        onClick = {
+//                            if(myImage == Icons.Default.Person){
+//                                myImage = Icons.Default.Lock
+//                            }else{
+//                                myImage = Icons.Default.Person
+//                            }
+//                        }
+//                    )
+//                )
+//            }
+//
+//
+//    }
+//}
+//
+//@Preview(
+//    showSystemUi = true
+//)
+//@Composable
+//fun BoxScreenPreview(modifier: Modifier = Modifier) {
+//    BoxScreen()
+//}
