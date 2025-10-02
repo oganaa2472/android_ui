@@ -33,7 +33,7 @@ fun RowScreenPreview(modifier: Modifier = Modifier) {
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
+                painter = painterResource(id = R.drawable.free_logo),
                 contentDescription = null,
                 modifier = Modifier.border(
                     width = 2.dp,
