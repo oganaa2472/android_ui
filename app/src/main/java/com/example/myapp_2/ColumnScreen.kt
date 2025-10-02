@@ -2,49 +2,83 @@ package com.example.myapp_2
 
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
-@Preview(
-    showBackground = true
-)
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @Composable
-fun RowScreenPreview(modifier: Modifier = Modifier) {
+fun BoxScreen(modifier: Modifier = Modifier) {
     Scaffold {
-        innerPadding->
-        Column(
-            modifier =Modifier.padding(
-                innerPadding
-            ).fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+            innerPadding ->
 
-            Image(
-                painter = painterResource(id = R.drawable.free_logo),
-                contentDescription = null,
-                modifier = Modifier.border(
-                    width = 2.dp,
-                    color = Color.Black,
-                    shape = CircleShape
+            Box(
+                modifier = modifier.padding(innerPadding)
+            ){
+                var myImage by remember {
+                    mutableStateOf(Icons.Default.Person)
+                }
+                Image(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = "Lock Icon",
+                    modifier = Modifier.size(50.dp).align(
+                        Alignment.TopStart
+                    )
                 )
-            )
-            Text(
-                text = "Maharishi International University"
-            )
+                Image(
+                    imageVector = myImage,
+                    contentDescription = "Lock Icon" ,
+                    modifier = Modifier.size(200.dp).align(
+                        Alignment.TopCenter
+                    ).clickable(
+                        onClick = {
+                            if(myImage == Icons.Default.Person){
+                                myImage = Icons.Default.Lock
+                            }else{
+                                myImage = Icons.Default.Person
+                            }
+                        }
+                    )
+                )
+                Image(
+                    imageVector = Icons.Default.Favorite ,
+                    contentDescription = "Lock Icon" ,
+                    modifier = Modifier.size(50.dp).align(
+                        Alignment.TopEnd
+                    ).clickable(
+                        onClick = {
+                            if(myImage == Icons.Default.Person){
+                                myImage = Icons.Default.Lock
+                            }else{
+                                myImage = Icons.Default.Person
+                            }
+                        }
+                    )
+                )
+            }
 
-        }
+
     }
+}
+
+@Preview(
+    showSystemUi = true
+)
+@Composable
+fun BoxScreenPreview(modifier: Modifier = Modifier) {
+    BoxScreen()
 }
