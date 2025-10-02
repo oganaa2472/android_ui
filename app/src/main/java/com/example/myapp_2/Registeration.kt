@@ -30,6 +30,7 @@ fun RegistrationScreen(modifier: Modifier = Modifier) {
         {
             var username by remember { mutableStateOf("") }
             val context = LocalContext.current
+            var errorMessage by remember { mutableStateOf(false) }
             TextField(
                 value = username,
                 onValueChange = {data->
@@ -41,8 +42,19 @@ fun RegistrationScreen(modifier: Modifier = Modifier) {
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text
                 ),
+                supportingText = {
+                    if(errorMessage){
+                        Text(text = "Please enter username and password")
+                    }
+                },
+                isError = errorMessage,
+                modifier = Modifier.fillMaxWidth().padding(start = 10.dp,end = 10.dp),
+                trailingIcon = {
+                    if(errorMessage){
+                        Text(text = "Error",color = MaterialTheme.colorScheme.error)
+                    }
+                }
 
-                modifier = Modifier.fillMaxWidth().padding(start = 10.dp,end = 10.dp)
             )
             var password by remember { mutableStateOf("") }
             OutlinedTextField(
@@ -108,8 +120,11 @@ fun RegistrationScreen(modifier: Modifier = Modifier) {
 
                     onClick = {
                         if(username.isEmpty() || password.isEmpty()){
+                            errorMessage = true
                             Toast.makeText(context, "Please enter username and password", Toast.LENGTH_SHORT).show()
                             return@Button
+                        }else{
+                            errorMessage = false
                         }
                         /* Handle registration logic here */
                         Toast.makeText(context, "Registration Successful for $username", Toast.LENGTH_SHORT).show()
